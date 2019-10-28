@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openldap-deployment
+  labels:
+    app: demo-user-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: my-openldap
+      app: demo-user-app
+  template:
+    metadata:
+      name: my-openldap-pod
+      labels:
+        name: my-openldap
+        app: demo-user-app
+
+    spec:
+      containers:
+        - name: my-ldap
+          image: dinkel/openldap
+          env:
+            - name: SLAPD_PASSWORD
+              value: "P@ssword01"
+            - name: SLAPD_DOMAIN
+              value: "ey.com"
+          ports:
+            - containerPort: 389

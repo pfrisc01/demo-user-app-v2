@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deployment
+  labels:
+    app: demo-user-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: my-tomcat
+      app: demo-user-app
+  template:
+    metadata:
+      name: my-tomcat
+      labels:
+        name: my-tomcat
+        app: demo-user-app
+
+    spec:
+      containers:
+        - name: my-tomcat
+          image: pfrisc01/my-tomcat
+          ports:
+            - containerPort: 8443
