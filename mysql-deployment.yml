@@ -12,7 +12,7 @@ spec:
       app: demo-user-app
   template:
     metadata:
-      name: my-mysql-pod
+      name: my-mysql
       labels:
         name: my-mysql
         app: demo-user-app
